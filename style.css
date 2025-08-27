@@ -27,7 +27,9 @@ header, footer {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
 }
-
+.bio{
+    min-width: 28%;
+}
 h1, h2 {
     color: #f1f5f9;
 }
@@ -76,4 +78,110 @@ ul {
     padding-left: 20px;
 }
 
-/* Länkstil (om du vill lägga till*
+.experience-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .experience-wrapper {
+    flex-direction: row;
+  }
+}
+
+.experience-list {
+  flex: 1;
+  list-style-type: disc;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.experience-list li {
+  margin-bottom: 12px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  color: #cbd5e1;
+}
+
+.experience-list li:hover {
+  background-color: #c9eeff57;
+}
+
+.info-box {
+  flex: 1;
+  background-color: #3b83f6c9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  min-height: 150px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+
+  display: none;
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none; /* Så den inte är klickbar när osynlig */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.info-box.visible {
+    display: block;
+  pointer-events: auto;
+  animation: bubbleIn 0.4s forwards;
+}
+
+/* När vi vill gömma rutan, lägg på bubbleOut */
+.info-box.hiding {
+  animation: bubbleOut 0.3s forwards;
+}
+
+@keyframes bubbleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bubbleOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.why-study {
+  background-color: #6071d1; 
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.why-study p {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+.why-study h2 {
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.why-study a {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.why-study a:hover {
+  text-decoration: underline;
+}
