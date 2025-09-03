@@ -185,21 +185,30 @@ ul {
 /* ===== Mobile (accordion animation) ===== */
 @media (max-width: 768px) {
   .info-box {
-    position: relative;
+    position: static;
     width: 100%;
-    left: 0;
-    margin: 10px 0;
+    box-sizing: border-box; /* 👈 NYCKELN */
     border-radius: 8px;
-    box-sizing: border-box;
     overflow: hidden;
-
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0; /* ingen extra plats när stängd */
+    padding: 0 1rem; /* 👈 lite inre spacing */
   }
 
   .info-box.visible {
+    max-height: 500px; /* justera efter textmängd */
     opacity: 1;
+    margin-top: 10px;
+    padding: 1rem; /* 👈 fullt padding när öppen */
+  }
+
+  .info-box.hiding {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    padding: 0 1rem; /* 👈 håller samma bredd vid stängning */
   }
 }
 

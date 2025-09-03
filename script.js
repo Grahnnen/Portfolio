@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const items = document.querySelectorAll(".experience-list li");
   const infoBox = document.querySelector(".info-box");
 
-  items.forEach(item => {
+  items.forEach((item) => {
     item.addEventListener("click", () => {
       const id = item.getAttribute("data-id");
       const info = experienceData[id];
@@ -51,35 +51,39 @@ document.addEventListener("DOMContentLoaded", () => {
         infoBox.classList.add("visible");
       } else {
         // MOBIL
-let mobileBox = item.nextElementSibling;
-if (!mobileBox || !mobileBox.classList.contains("info-box")) {
-  mobileBox = document.createElement("div");
-  mobileBox.className = "info-box";
-  item.insertAdjacentElement("afterend", mobileBox);
-}
+        let mobileBox = item.nextElementSibling;
 
-if (mobileBox.classList.contains("visible")) {
-  // STÄNG med animation
-  mobileBox.style.maxHeight = mobileBox.scrollHeight + "px"; // startläge
-  void mobileBox.offsetHeight; // reflow
-  mobileBox.style.maxHeight = "0"; // animera ihop
-  mobileBox.classList.remove("visible");
+        if (!mobileBox || !mobileBox.classList.contains("info-box")) {
+          mobileBox = document.createElement("div");
+          mobileBox.className = "info-box";
+          item.insertAdjacentElement("afterend", mobileBox);
+        }
 
-  mobileBox.addEventListener("transitionend", function handler(e) {
-    if (e.propertyName === "max-height") {
-      mobileBox.remove(); // ta bort HELT efter animation
-      mobileBox.removeEventListener("transitionend", handler);
-    }
-  });
-} else {
-  // ÖPPNA
-  mobileBox.innerHTML = `<h3>${info.title}</h3><p>${info.description}</p>`;
-  mobileBox.style.maxHeight = "0"; // börja stängd
-  void mobileBox.offsetHeight; // reflow
-  mobileBox.classList.add("visible");
-  mobileBox.style.maxHeight = mobileBox.scrollHeight + "px"; // expandera
-}
+        if (mobileBox.classList.contains("visible")) {
+          // === STÄNG ===
+          mobileBox.style.maxHeight = mobileBox.scrollHeight + "px"; // start
+          void mobileBox.offsetHeight; // reflow
+          mobileBox.style.maxHeight = "0"; // animera
 
+          mobileBox.addEventListener(
+            "transitionend",
+            function handler(e) {
+              if (e.propertyName === "max-height") {
+                mobileBox.classList.remove("visible");
+                mobileBox.style.display = "none"; // ta bort visuellt → inget hack, inget mellanrum
+                mobileBox.removeEventListener("transitionend", handler);
+              }
+            }
+          );
+        } else {
+          // === ÖPPNA ===
+          mobileBox.innerHTML = `<h3>${info.title}</h3><p>${info.description}</p>`;
+          mobileBox.style.display = "block"; // se till att den finns
+          mobileBox.style.maxHeight = "0"; // börja stängd
+          void mobileBox.offsetHeight; // reflow
+          mobileBox.classList.add("visible");
+          mobileBox.style.maxHeight = mobileBox.scrollHeight + "px"; // expandera
+        }
       }
     });
   });
@@ -87,7 +91,10 @@ if (mobileBox.classList.contains("visible")) {
   // DESKTOP: klick utanför stänger rutan
   document.addEventListener("click", (e) => {
     if (window.innerWidth > 768) {
-      if (!infoBox.contains(e.target) && ![...items].some(i => i.contains(e.target))) {
+      if (
+        !infoBox.contains(e.target) &&
+        ![...items].some((i) => i.contains(e.target))
+      ) {
         infoBox.classList.remove("visible");
       }
     }
