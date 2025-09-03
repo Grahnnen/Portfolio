@@ -1,157 +1,102 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Min Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel=“stylesheet” type=“text/css” href=“style.css”>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Min Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Robin Grahn</h1>
-        </header>
+  <div class="container">
+    <header>
+      <h1>Robin Grahn</h1>
+    </header>
 
-        <main>
-            <section class="bio">
-                <h2>Om mig</h2>
-                <img src="images/Crow114.png" alt="Bild på mig" class="profilbild">
-                <p> Hej! Jag heter Robin, jag är 24 år gammal och är en passionerad utvecklare som älskar att skapa webbapplikationer med HTML, CSS, PHP och andra moderna tekniker. 
-                    Jag tycker om att lösa problem och bygga gränssnitt som är både enkla att använda och tillgängliga för alla. 
-                    Även om jag trivs med hela stacken, har jag en särskild förkärlek för backend-utveckling där jag får jobba med serverlogik och databaser. 
-                    Mitt fokus är att skapa smarta och välfungerande lösningar som verkligen gör skillnad för användarna.</p>
-            </section>
+    <main>
+      <section class="bio">
+        <h2>Om mig</h2>
+        <img src="images/Crow114.png" alt="Bild på mig" class="profilbild">
+        <p>Hej! Jag heter Robin, jag är 24 år gammal och är en passionerad utvecklare som älskar att skapa webbapplikationer med HTML, CSS, PHP och andra moderna tekniker. 
+          Jag tycker om att lösa problem och bygga gränssnitt som är både enkla att använda och tillgängliga för alla. 
+          Även om jag trivs med hela stacken, har jag en särskild förkärlek för backend-utveckling där jag får jobba med serverlogik och databaser. 
+          Mitt fokus är att skapa smarta och välfungerande lösningar som verkligen gör skillnad för användarna.</p>
+      </section>
 
-            
-            <section class="experience">
-                <h2>Erfarenheter</h2>
-                <div class="experience-wrapper">
-                    <ul class="experience-list">
-                        <li data-id="1"><strong>Maskinoperatör</strong> – Fazer (2022–2025)</li>
-                        <li data-id="3"><strong>UX/UI-design</strong> – Komvux</li>
-                        <li data-id="2"><strong>Värnplikt</strong> – Ledningsregementet Enköping (2020–2021)</li>
-                        <li data-id="4"><strong>Teknikprogrammet</strong> – Dragonskolan</li>
-                    </ul>
-                    <div class="info-box" id="infoBox">
-                        <h3>Välj en erfarenhet</h3>
-                        <p>Klicka på en erfarenhet för mer info.</p>
-                    </div>
-                </div>
-                <h2>Mina Hobbys</h2>
-                <div class="experience-wrapper">
-                    <ul class="experience-list">
-                        <li data-id="7">Koda</li>
-                        <li data-id="8">Resa</li>
-                        <li data-id="9">Bilar</li>
-                    </ul>
-                </div>
-            </section>
+      <section class="experience">
+        <h2>Erfarenheter</h2>
+        <div class="experience-wrapper">
+          <ul class="experience-list">
+            <li data-id="1"><strong>Maskinoperatör</strong> – Fazer (2022–2025)</li>
+            <li data-id="3"><strong>UX/UI-design</strong> – Komvux</li>
+            <li data-id="2"><strong>Värnplikt</strong> – Ledningsregementet Enköping (2020–2021)</li>
+            <li data-id="4"><strong>Teknikprogrammet</strong> – Dragonskolan</li>
+          </ul>
+          <div class="info-box" id="infoBox">
+            <h3>Välj en erfarenhet</h3>
+            <p>Klicka på en erfarenhet för mer info.</p>
+          </div>
+        </div>
 
-        
-        </main>
-        <section class="why-study">
-            <h2>Varför jag pluggar detta</h2>
-            <p>Jag började programmera i C# redan som 13-åring och har alltid tyckt det varit fascinerande. 
-                Med tiden växte intresset till något större och till slut insåg jag att det här är vad jag vill arbeta med, vilket ledde mig till den här utbildningen.</p>
-            <p>Kolla in <a href="https://www.Knowit.se" target="_blank" rel="noopener noreferrer">Knowit</a> som arbetar med IT, design och kommunikation och rekryterar ofta juniora fullstack- eller backendutvecklare inom .NET/C# för kontoret i Norrland.</p>
-            <p>Kolla in <a href="https://www.northernskill.se" target="_blank" rel="noopener noreferrer">Northern Skill</a> annonserar ofta efter junior systemutvecklare i Umeå, inklusive inom frontend och backend. Tjänsterna hanteras via deras konsultuppdrag.</p>
-            <p>Kolla in <a href="https://www.Dizparc.se" target="_blank" rel="noopener noreferrer">Dizparc</a> i min stad, som jobbar med just det här området.</p>
-        </section>
-        <footer>
-            <p>&copy; 2025 Robin Grahn</p>
-        </footer>
-    </div>
-    <script>
-    const experienceData = {
-      1: {
-        title: "Maskinoperatör",
-        description: "Arbetade med att övervaka och underhålla produktionsmaskiner på Fazer mellan 2022 och 2025. Ansvarade för kvalitetskontroll och säkerhetsrutiner."
-      },
-      2: {
-        title: "Värnplikten",
-        description: "Gjorde värnplikten i Enköping som radiolänksoldat. Jag va förare och kranbilsoperatör."
-      },
-      3: {
-        title: "UX/UI-design",
-        description: "Genomförde Komvuxkurs i UX/UI-design där jag lärde mig grunderna i användarcentrerad design och prototypframställning."
-      },
-      4: {
-        title: "Teknikprogrammet",
-        description: "Studerade på Dragonskolan med fokus på teknik och programmering, vilket lade grunden för mitt intresse för webbutveckling."
-      },
-      
-      7: {
-        title: "Spelprogrammering",
-        description: "Hobbyverksamhet sedan 2013 där jag skapat egna spel och experimenterat med C# i Unity-motorn."
-      },
-      8: {
-        title: "Resor och vandring",
-        description: "Gillar att vara ute i naturen mycket och tälta. I sommras besökte jag Lofoten i Norge där vi tältade."
-      },
-      9: {
-        title: "Fordon",
-        description: "Tycker det är kul att skruva och försöka restorera upp äldre bilar."
-      }
-    };
+        <h2>Mina Hobbys</h2>
+        <div class="experience-wrapper">
+          <ul class="experience-list">
+            <li data-id="7">Koda</li>
+            <li data-id="8">Resa</li>
+            <li data-id="9">Bilar</li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
-    const listItems = document.querySelectorAll('.experience-list li');
-    const infoBox = document.getElementById('infoBox');
+    <section class="projects">
+      <h2>Mina Projekt</h2>
+      <div class="project-card">
+        <h3>Projektets namn</h3>
+        <p>Kort beskrivning av projektet, vad du byggde, vilka tekniker du använde.</p>
+        <a href="https://github.com/dittrepo" target="_blank">Se på GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Projektets namn</h3>
+        <p>Kort beskrivning av projektet, vad du byggde, vilka tekniker du använde.</p>
+        <a href="https://github.com/dittrepo" target="_blank">Se på GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Projektets namn</h3>
+        <p>Kort beskrivning av projektet, vad du byggde, vilka tekniker du använde.</p>
+        <a href="https://github.com/dittrepo" target="_blank">Se på GitHub</a>
+      </div>
+    </section>
 
-    let activeId = null;
+    <section class="skills">
+      <h2>Färdigheter</h2>
+      <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>PHP & MySQL</li>
+        <li>C# & .NET</li>
+        <li>Git & GitHub</li>
+      </ul>
+    </section>
 
-listItems.forEach(item => {
-  item.addEventListener('click', (e) => {
-    e.stopPropagation();
+    <section class="why-study">
+      <h2>Varför jag pluggar detta</h2>
+      <p>Jag började programmera i C# redan som 13-åring och har alltid tyckt det varit fascinerande. 
+        Med tiden växte intresset till något större och till slut insåg jag att det här är vad jag vill arbeta med, vilket ledde mig till den här utbildningen.</p>
+      <p>Kolla in <a href="https://www.Knowit.se" target="_blank">Knowit</a> som arbetar med IT, design och kommunikation.</p>
+      <p>Kolla in <a href="https://www.northernskill.se" target="_blank">Northern Skill</a> som annonserar ofta efter juniora utvecklare.</p>
+      <p>Kolla in <a href="https://www.Dizparc.se" target="_blank">Dizparc</a> i min stad, som jobbar med just det här området.</p>
+    </section>
 
-    const id = item.getAttribute('data-id');
+    <section class="contact">
+      <h2>Kontakta mig</h2>
+      <p>Maila mig på <a href="mailto:robin.grahn@live.se">robin.grahn@live.se</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/robin-grahn-42221a205/" target="_blank">Min profil</a></p>
+    </section>
 
-    if (activeId === id) {
-      // Lägg på 'hiding' animation och ta bort 'visible' efter animationen
-      infoBox.classList.add('hiding');
-      infoBox.classList.remove('visible');
-      activeId = null;
-      listItems.forEach(i => i.classList.remove('active'));
+    <footer>
+      <p>&copy; 2025 Robin Grahn</p>
+    </footer>
+  </div>
 
-      // Efter animationen (300ms), göm infoBox helt (t.ex. display:none)
-      setTimeout(() => {
-        infoBox.style.display = 'none';
-        infoBox.classList.remove('hiding');
-      }, 300);
-
-    } else {
-      const info = experienceData[id];
-      if (info) {
-        // Visa infoBox med display:block och bubbleIn animation
-        infoBox.style.display = 'block';
-        infoBox.innerHTML = `
-          <h3>${info.title}</h3>
-          <p>${info.description}</p>
-        `;
-        infoBox.classList.remove('hiding');
-        infoBox.classList.add('visible');
-        listItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        activeId = id;
-      }
-    }
-  });
-});
-
-// Dölj infobox om man klickar utanför listan med samma animation
-document.addEventListener('click', () => {
-  if (activeId !== null) {
-    infoBox.classList.add('hiding');
-    infoBox.classList.remove('visible');
-    activeId = null;
-    listItems.forEach(i => i.classList.remove('active'));
-    setTimeout(() => {
-      infoBox.style.display = 'none';
-      infoBox.classList.remove('hiding');
-    }, 300);
-  }
-});
-    </script>
-
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,87 +1,134 @@
-/* Importera modern font från Google Fonts */
+/* =========================================================
+   1. IMPORTS & GLOBAL SETTINGS
+   ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
+html, body {
+  overflow-x: hidden;
+}
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0f172a;
-    color: #cbd5e1;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+  color: #cbd5e1;
+  --parallax: 0px;
 }
 
+/* Background with parallax effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* alltid minst 1 skärm */
+  min-height: 100%; /* fallback */
+  background-image: url('/images/Background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  will-change: transform;
+}
+
+
+
+/* Container to hold content with semi-transparent background */
 .container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #1e293b;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: rgba(15, 23, 42, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
 }
 
-/* Header + Footer */
-header, footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #3b82f6;
-    color: #f1f5f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+
+/* =========================================================
+   2. TYPOGRAPHY
+   ========================================================= */
+h1 {
+  color: #f1f5f9;
 }
-.bio{
-    min-width: 28%;
-}
-h1, h2 {
-    color: #f1f5f9;
+
+h2 {
+  color: #38bdf8;
 }
 
 p, li {
-    color: #cbd5e1;
+  color: #cbd5e1;
 }
 
-/* Layout */
+
+/* =========================================================
+   3. HEADER & FOOTER
+   ========================================================= */
+header, footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #3b82f6;
+  color: #f1f5f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+
+/* =========================================================
+   4. LAYOUT
+   ========================================================= */
 main {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.bio {
+  min-width: 28%;
 }
 
 @media (min-width: 768px) {
-    main {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  main {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-    .bio, .hobbies {
-        flex: 1;
-        padding: 0 20px;
-    }
+  .bio, .hobbies {
+    flex: 1;
+    padding: 0 20px;
+  }
 
-    .bio {
-        border-right: 1px solid #334155;
-    }
+  .bio {
+    border-right: 1px solid #334155;
+  }
 }
 
-/* Bild */
+
+/* =========================================================
+   5. IMAGES
+   ========================================================= */
 .profilbild {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 8px;
-    display: block;
-    margin-bottom: 15px;
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+  width: 100%;
+  max-width: 250px;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 }
 
-/* Lista */
+
+/* =========================================================
+   6. EXPERIENCE SECTION
+   ========================================================= */
 ul {
-    list-style-type: square;
-    padding-left: 20px;
+  list-style-type: square;
+  padding-left: 20px;
 }
 
 .experience-wrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative; /* ny! gör så att info-box kan placeras här */
 }
 
 @media (min-width: 768px) {
@@ -102,86 +149,262 @@ ul {
   padding: 5px 8px;
   border-radius: 5px;
   color: #cbd5e1;
+  transition: background-color 0.2s ease;
 }
 
 .experience-list li:hover {
-  background-color: #c9eeff57;
+  background-color: rgba(201, 238, 255, 0.35);
 }
 
+/* Info-box outside container, positioned next to list */
 .info-box {
-  flex: 1;
-  background-color: #3b83f6c9;
+  position: absolute;
+  top: 0;
+  left: 110%;
+  width: 300px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid rgba(56, 189, 248, 0.3);
-  min-height: 150px;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  z-index: 50;
 
-  display: none;
   opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none; /* Så den inte är klickbar när osynlig */
+  pointer-events: none;
+  transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .info-box.visible {
-    display: block;
+  opacity: 1;
   pointer-events: auto;
-  animation: bubbleIn 0.4s forwards;
+  transform: translateY(0);
+}
+/* ===== Mobile (accordion animation) ===== */
+@media (max-width: 768px) {
+  .info-box {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  .info-box.visible {
+    opacity: 1;
+  }
 }
 
-/* När vi vill gömma rutan, lägg på bubbleOut */
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
 .info-box.hiding {
   animation: bubbleOut 0.3s forwards;
 }
 
+/* Keyframes for animations */
 @keyframes bubbleIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes bubbleOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5); }
 }
 
+
+/* =========================================================
+   7. WHY STUDY SECTION
+   ========================================================= */
 .why-study {
   background-color: #6071d1; 
   padding: 20px;
   border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
-.why-study p {
-    color: #cbd5e1;
-    line-height: 1.6;
-}
+
 .why-study h2 {
   color: #cbd5e1;
   margin-bottom: 12px;
 }
 
+.why-study p {
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
 .why-study a {
-  color: #ff6b6b;
-  text-decoration: none;
+  color: #e11d48;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .why-study a:hover {
   text-decoration: underline;
+}
+
+
+/* =========================================================
+   8. PROJECTS SECTION
+   ========================================================= */
+.projects {
+  margin: 60px 0;
+}
+
+.projects h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #38bdf8;
+  margin-bottom: 30px;
+}
+
+.project-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+}
+
+.project-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  color: #f1f5f9;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  margin-bottom: 10px;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 5px;
+  color: #e11d48;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  color: #38bdf8;
+}
+
+
+/* =========================================================
+   9. SKILLS SECTION
+   ========================================================= */
+.skills {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.skills h2 {
+  font-size: 2rem;
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.skills li {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.skills li:hover {
+  background: rgba(56, 189, 248, 0.15);
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   10. CONTACT SECTION
+   ========================================================= */
+.contact {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.contact a {
+  color: #e11d48;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: #38bdf8;
+}
+
+
+/* ===== Desktop-only closing animation (keeps your original bubbleOut) ===== */
+@media (min-width: 769px) {
+  .info-box.hiding {
+    animation: bubbleOut 0.3s forwards;
+  }
 }
